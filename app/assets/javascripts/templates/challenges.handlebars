@@ -1,0 +1,11 @@
+<h1>Challenges</h1>
+
+<ul>
+	{{#each challenge in controller}}
+		<li>{{#linkTo 'challenge' challenge}}{{challenge.body}}{{/linkTo}}</li>
+	{{else}}
+		<li>There are no challenges.</li>
+	{{/each}}
+</ul>
+
+{{outlet}}
