@@ -14,8 +14,6 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    active_model_serializers (0.8.1)
-      activemodel (>= 3.0)
     activemodel (3.2.13)
       activesupport (= 3.2.13)
       builder (~> 3.0.0)
@@ -33,11 +31,13 @@ GEM
     annotate (2.5.0)
       rake
     arel (3.0.2)
-    barber (0.4.2)
-      ember-source
-      execjs
-      handlebars-source
+    better_errors (0.9.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.0.4)
+    coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -45,22 +45,11 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    debug_inspector (0.0.2)
     diff-lcs (1.2.4)
-    ember-data-source (0.13)
-      ember-source
-    ember-rails (0.12.0)
-      active_model_serializers
-      barber (>= 0.4.1)
-      ember-data-source
-      ember-source (>= 1.0.0.rc2.2)
-      execjs (>= 1.2)
-      railties (>= 3.1)
-    ember-source (1.0.0.rc5)
-      handlebars-source (= 1.0.0.rc4)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    handlebars-source (1.0.0.rc4)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -127,6 +116,11 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
+    twitter-bootstrap-rails (2.2.7)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
     tzinfo (0.3.37)
     uglifier (2.1.1)
       execjs (>= 0.3.0)
@@ -138,11 +132,13 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  better_errors
+  binding_of_caller
   coffee-rails (~> 3.2.1)
-  ember-rails
   jquery-rails
   pg
   rails (= 3.2.13)
   rspec-rails
   sass-rails (~> 3.2.3)
+  twitter-bootstrap-rails
   uglifier (>= 1.0.3)

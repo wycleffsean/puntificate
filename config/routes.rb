@@ -1,16 +1,21 @@
 Puntificate::Application.routes.draw do
 
-  get "ember/start"
-
-  namespace :api do
-    namespace :v1 do
-      resources :challenges
-      resources :responses
-    end
+  resources :challenges do
+    resources :responses
   end
 
-  root :to => 'ember#start'
+  # EMBER
+  #get "ember/start"
 
+  #namespace :api do
+  #  namespace :v1 do
+  #    resources :challenges
+  #    resources :responses
+  #  end
+  #end
+
+  #root :to => 'ember#start'
+  root :to => 'challenges#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

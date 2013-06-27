@@ -6,10 +6,15 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'ember-rails'
+#gem 'ember-rails'
 gem 'rspec-rails'
-gem 'annotate', group: :development
+gem 'twitter-bootstrap-rails'
 
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller" # for better_errors advanced features
+  gem 'annotate'
+end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

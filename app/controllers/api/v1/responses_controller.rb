@@ -8,4 +8,14 @@ class Api::V1::ResponsesController < ApplicationController
   def show
     respond_with Response.find(params[:id])
   end
+
+  def create
+    response = Response.new(params[:response])
+
+    if response.save
+      render json: response
+    else
+      render json: response, status: 422
+    end
+  end
 end
