@@ -9,6 +9,7 @@ gem 'pg'
 #gem 'ember-rails'
 gem 'rspec-rails'
 gem 'twitter-bootstrap-rails'
+gem 'devise'
 
 group :development do
   gem "better_errors"

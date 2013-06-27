@@ -10,6 +10,7 @@
 #
 
 class Challenge < ActiveRecord::Base
+  belongs_to :user
   has_many :responses
   attr_accessible :body, :url, :responses
 

@@ -10,6 +10,7 @@
 #
 
 class Response < ActiveRecord::Base
+  belongs_to :user
   belongs_to :challenge
   attr_accessible :body, :challenge
 end

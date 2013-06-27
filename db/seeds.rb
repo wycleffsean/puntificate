@@ -6,9 +6,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-challenge = Challenge.create(
+user = User.create(
+	name: "test_user",
+	email: "fake@aol.com",
+	password: "password",
+	password_confirmation: "password"
+)
+user.save
+
+challenge = user.challenges.build(
   body: 'Ex-NBA player lived with guns, feces',
   url: 'www.cnn.com/video/2.0/video/sports/2013/03/06/pkg-former-nba-star-lived-in-filthy-mansion.komo.html'
 )
+challenge.save
 
-Response.create( body: 'What a shitty player', challenge: challenge )
+response = challenge.responses.build( body: 'What a shitty player', challenge: challenge )
+response.user = user
+response.save

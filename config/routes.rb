@@ -1,5 +1,7 @@
 Puntificate::Application.routes.draw do
 
+  devise_for :users
+
   resources :challenges do
     resources :responses
   end
