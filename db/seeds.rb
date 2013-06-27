@@ -6,7 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Challenge.create(
+challenge = Challenge.create(
   body: 'Ex-NBA player lived with guns, feces',
   url: 'www.cnn.com/video/2.0/video/sports/2013/03/06/pkg-former-nba-star-lived-in-filthy-mansion.komo.html'
 )
+
+Response.create( body: 'What a shitty player', challenge: challenge )

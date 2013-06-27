@@ -1,3 +1,3 @@
 class ChallengeSerializer < ActiveModel::Serializer
-  attributes :id, :body, :url
+  attributes :id, :body, :url, :response_ids
 end
