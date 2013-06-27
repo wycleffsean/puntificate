@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627061131) do
+ActiveRecord::Schema.define(:version => 20130627234156) do
 
   create_table "challenges", :force => true do |t|
     t.text     "body"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20130627061131) do
     t.integer  "cached_votes_score", :default => 0
     t.integer  "cached_votes_up",    :default => 0
     t.integer  "cached_votes_down",  :default => 0
+    t.string   "user_name"
   end
 
   add_index "challenges", ["cached_votes_down"], :name => "index_challenges_on_cached_votes_down"
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20130627061131) do
     t.integer  "cached_votes_score", :default => 0
     t.integer  "cached_votes_up",    :default => 0
     t.integer  "cached_votes_down",  :default => 0
+    t.string   "user_name"
   end
 
   add_index "responses", ["cached_votes_down"], :name => "index_responses_on_cached_votes_down"
