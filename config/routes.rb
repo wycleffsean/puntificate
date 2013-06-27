@@ -3,6 +3,11 @@ Puntificate::Application.routes.draw do
   devise_for :users
 
   resources :challenges do
+    post :upvote
+    post :downvote
+
+    get :upvote
+    get :downvote
     resources :responses
   end
 

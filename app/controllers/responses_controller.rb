@@ -10,12 +10,10 @@ class ResponsesController < ApplicationController
   end
 
   def create
-    challenge = Challenge.find(params[:challenge_id])
-    response = challenge.responses.build(params[:response])
-
-    if response.save
-      redirect_to challenge_path(response.challenge)
-    end
+    @challenge = Challenge.find(params[:challenge_id])
+    @new_response = @challenge.responses.build(params[:response])
+    @new_response.save
+    redirect_to challenge_path(@new_response.challenge)    
   end
 
 end

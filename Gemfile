@@ -10,6 +10,7 @@ gem 'pg'
 gem 'rspec-rails'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
+gem 'acts_as_votable', '~> 0.5.0'
 
 group :development do
   gem "better_errors"

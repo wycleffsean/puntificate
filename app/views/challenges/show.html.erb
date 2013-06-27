@@ -31,7 +31,7 @@
               :class => 'btn btn-danger' %>
 </div>
 
-<%= form_for [@challenge, Response.new] do |f| %>
+<%= form_for [@challenge, @new_response] do |f| %>
   <%= f.text_area :body, size: "60x3" %>
   <%= f.submit "Submit", :class => "btn btn-primary" %>
 <% end %>
@@ -41,7 +41,7 @@
 <% else %>
   <ul>
   <% @challenge.responses.each do |response| %>
-    <li><%= response.body %></li>
+    <li><b><%= response.cached_votes_score %></b><%= response.body %></li>
   <% end %>
   </ul>
 <% end %>

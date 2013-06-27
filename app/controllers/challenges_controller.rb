@@ -2,11 +2,12 @@ class ChallengesController < ApplicationController
   respond_to :html
 
   def index
-    respond_with @challenges = Challenge.all
+    @challenges = Challenge.all
   end
 
   def show
-    respond_with @challenge = Challenge.includes(:responses).find(params[:id])
+    @challenge = Challenge.includes(:responses).find(params[:id])
+    @new_response = Response.new
   end
 
   def new
@@ -15,7 +16,7 @@ class ChallengesController < ApplicationController
 
   def create
     @challenge = Challenge.new(params[:challenge])
-
+    @challenge.user = current_user
     if @challenge.save
       redirect_to challenge_url(@challenge), success: "Challenge created"
     else
@@ -35,4 +36,17 @@ class ChallengesController < ApplicationController
       render :action => :edit
     end
   end
+
+  def destroy
+    @challenge = Challenge.find params[:id]
+    @challenge.destroy
+    redirect_to challenges_path
+  end
+
+  def upvote
+    challenge = Challenge.find(params[:challenge_id])
+    render text: "up id:#{params[:challenge_id]}"
+    throw
+  end
+
 end
