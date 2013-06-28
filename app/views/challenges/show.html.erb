@@ -5,6 +5,7 @@
 <div class="well">
   <% if @challenge.url.empty? %>
     <h4><em><%= @challenge.body %></em></h4>
+    <small class="pull-right"><%= @challenge.user_name %></small>
   <% else %>
     <h4><em><%= link_to @challenge.body, @challenge.url, target: '_blank' %></em></h4>
   <% end %>
@@ -41,7 +42,10 @@
 <% else %>
   <ul>
   <% @challenge.responses.each do |response| %>
-    <li><b><%= response.cached_votes_score %></b><%= response.body %></li>
+    <li>
+      <%= link_to '+', challenge_response_upvote_path(@challenge, response) %> / <%= link_to '-', challenge_response_downvote_path(@challenge, response) %>
+      <b><%= response.cached_votes_score %></b><%= response.body %> - <%= response.user_name %>
+    </li>
   <% end %>
   </ul>
 <% end %>

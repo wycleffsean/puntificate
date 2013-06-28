@@ -16,6 +16,7 @@
 #
 
 class Response < ActiveRecord::Base
+  default_scope order('cached_votes_score DESC')
   acts_as_votable
   belongs_to :user
   belongs_to :challenge
@@ -28,6 +29,6 @@ class Response < ActiveRecord::Base
   before_save :set_user_name
 
   def set_user_name
-  	user_name = user.name
+  	self.user_name = user.name
   end
 end

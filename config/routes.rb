@@ -8,7 +8,13 @@ Puntificate::Application.routes.draw do
 
     get :upvote
     get :downvote
-    resources :responses
+    resources :responses do
+      post :upvote
+      post :downvote
+
+      get :upvote
+      get :downvote
+    end
   end
 
   # EMBER

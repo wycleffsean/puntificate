@@ -27,7 +27,7 @@ class Challenge < ActiveRecord::Base
   before_save :set_user_name
 
   def set_user_name
-  	user_name = user.name
+  	self.user_name = user.name
   end
 
   def response_ids
