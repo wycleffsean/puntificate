@@ -20,17 +20,17 @@
 </dl>
 <%
 =end %>
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              challenges_url, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_challenge_url(@challenge), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              challenge_url(@challenge),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
+<% if can? :manage, @challenge %>
+  <div class="form-actions">
+    <%= link_to t('.back', :default => t("helpers.links.back")),
+                challenges_url, :class => 'btn'  %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                challenge_url(@challenge),
+                :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-danger' %>
+  </div>
+<% end %>
 
 <%= form_for [@challenge, @new_response] do |f| %>
   <%= f.text_area :body, size: "60x3" %>
@@ -45,6 +45,13 @@
     <li>
       <%= link_to '+', challenge_response_upvote_path(@challenge, response) %> / <%= link_to '-', challenge_response_downvote_path(@challenge, response) %>
       <b><%= response.cached_votes_score %></b><%= response.body %> - <%= response.user_name %>
+      <%# if can? :destroy, response %>
+        <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                    challenge_response_path(@challenge, response),
+                    :method => 'delete',
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class => 'btn-mini btn-danger' %>
+    <%# end %>
     </li>
   <% end %>
   </ul>

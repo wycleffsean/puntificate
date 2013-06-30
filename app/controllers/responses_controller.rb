@@ -17,6 +17,13 @@ class ResponsesController < ApplicationController
     redirect_to challenge_path(@new_response.challenge)    
   end
 
+  def destroy
+    @response = Response.find params[:id]
+    authorize! :destroy, @response
+    @response.destroy
+    redirect_to challenge_path(params[:challenge_id])
+  end
+
   def upvote
     response = Response.find(params[:response_id])
     case current_user.voted_as_when_voted_for response

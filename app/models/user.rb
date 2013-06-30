@@ -31,4 +31,8 @@ class User < ActiveRecord::Base
   acts_as_voter
   has_many :challenges
   has_many :responses
+
+  def admin?
+    false
+  end
 end

@@ -23,7 +23,7 @@ class ChallengesController < ApplicationController
       render :action => :create
     end
   end
-  
+=begin  
   def edit
     @challenge = Challenge.find params[:id]
   end
@@ -36,9 +36,10 @@ class ChallengesController < ApplicationController
       render :action => :edit
     end
   end
-
+=end
   def destroy
     @challenge = Challenge.find params[:id]
+    authorize! :destroy, @challenge
     @challenge.destroy
     redirect_to challenges_path
   end
