@@ -32,9 +32,11 @@
   </div>
 <% end %>
 
-<%= form_for [@challenge, @new_response] do |f| %>
-  <%= f.text_area :body, size: "60x3" %>
-  <%= f.submit "Submit", :class => "btn btn-primary" %>
+<% unless @challenge.closed %>
+  <%= form_for [@challenge, @new_response] do |f| %>
+    <%= f.text_area :body, size: "60x3" %>
+    <%= f.submit "Submit", :class => "btn btn-primary" %>
+  <% end %>
 <% end %>
 
 <% if @challenge.responses.empty? %>

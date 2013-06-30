@@ -11,19 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627234156) do
+ActiveRecord::Schema.define(:version => 20130630180559) do
 
   create_table "challenges", :force => true do |t|
     t.text     "body"
     t.string   "url"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.integer  "user_id"
     t.integer  "cached_votes_total", :default => 0
     t.integer  "cached_votes_score", :default => 0
     t.integer  "cached_votes_up",    :default => 0
     t.integer  "cached_votes_down",  :default => 0
     t.string   "user_name"
+    t.boolean  "closed",             :default => false
+    t.datetime "closed_at"
   end
 
   add_index "challenges", ["cached_votes_down"], :name => "index_challenges_on_cached_votes_down"

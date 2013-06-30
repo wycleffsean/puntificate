@@ -13,6 +13,8 @@
 #  cached_votes_up    :integer          default(0)
 #  cached_votes_down  :integer          default(0)
 #  user_name          :string(255)
+#  closed             :boolean          default(FALSE)
+#  closed_at          :datetime
 #
 
 class Challenge < ActiveRecord::Base
@@ -25,9 +27,19 @@ class Challenge < ActiveRecord::Base
   validates :user, presence: true
 
   before_save :set_user_name
-
   def set_user_name
   	self.user_name = user.name
+  end
+
+  before_create :closing_time
+  def closing_time
+    self.closed_at = DateTime.now + 30.seconds
+    self.delay_until(self.closed_at).close
+  end
+
+  def close
+    self.closed = true
+    self.save
   end
 
   def response_ids

@@ -13,10 +13,20 @@ gem 'devise'
 gem 'acts_as_votable', '~> 0.5.0'
 gem 'cancan'
 
+gem 'sidekiq'
+gem 'sinatra', :require => false # for sidekiq web
+gem 'slim' # for sidekiq web
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller" # for better_errors advanced features
   gem 'annotate'
+  gem 'thin'
+end
+
+group :production do
+	# Use unicorn as the app server
+	gem 'unicorn'
 end
 # Gems used only for assets and not required
 # in production environments by default.
@@ -37,9 +47,6 @@ gem 'jquery-rails'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'

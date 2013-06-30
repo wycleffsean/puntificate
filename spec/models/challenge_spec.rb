@@ -13,6 +13,8 @@
 #  cached_votes_up    :integer          default(0)
 #  cached_votes_down  :integer          default(0)
 #  user_name          :string(255)
+#  closed             :boolean          default(FALSE)
+#  closed_at          :datetime
 #
 
 require 'spec_helper'
