@@ -12,6 +12,7 @@ gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'acts_as_votable', '~> 0.5.0'
 gem 'cancan'
+gem 'momentjs-rails'
 
 gem 'sidekiq'
 gem 'sinatra', :require => false # for sidekiq web

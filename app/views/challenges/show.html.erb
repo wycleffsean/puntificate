@@ -1,6 +1,6 @@
 <%- model_class = Challenge -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %> - <%= @challenge.closed ? "Closed" : "Open" %></h1>
 </div>
 <div class="well">
   <% if @challenge.url.empty? %>

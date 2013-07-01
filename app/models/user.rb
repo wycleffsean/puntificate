@@ -33,6 +33,6 @@ class User < ActiveRecord::Base
   has_many :responses
 
   def admin?
-    false
+    self.id == 1
   end
 end

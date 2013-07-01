@@ -18,6 +18,7 @@
 #
 
 class Challenge < ActiveRecord::Base
+  default_scope where('closed = false')
   acts_as_votable
   belongs_to :user
   has_many :responses
@@ -33,7 +34,11 @@ class Challenge < ActiveRecord::Base
 
   before_create :closing_time
   def closing_time
-    self.closed_at = DateTime.now + 30.seconds
+    self.closed_at = DateTime.now + 24.hours    
+  end
+
+  after_create :expire_challenge
+  def expire_challenge
     self.delay_until(self.closed_at).close
   end
 
