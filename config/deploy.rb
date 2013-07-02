@@ -27,10 +27,23 @@ role :db,  "198.199.95.73", :primary => true # This is where Rails migrations wi
 # these http://github.com/rails/irs_process_scripts
 
 # If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+
+set :rails_env, :production
+set :unicorn, "bundle exec unicorn"
+set :unicorn_pid, "/var/www/shared/pids/unicorn.pid"
+set :unicorn_config, "#{current_path}/config/unicorn.rb"
+
+namespace :deploy do
+  task :start, :roles => :app, :except => { :no_release => true } do
+    run "cd #{current_path} && #{try_sudo} #{unicorn} -c #{unicorn_config} -E #{rails_env} -D"
+  end
+  task :stop, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} kill 'cat #{unicorn_pid}'"
+  end
+  task :graceful_stop, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} kill -s QUIT 'cat #{unicorn_pid}'"
+  end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} kill -s USR2 'cat #{unicorn_pid}'"
+  end
+end
