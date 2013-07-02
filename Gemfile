@@ -50,7 +50,7 @@ gem 'jquery-rails'
 # gem 'jbuilder'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
