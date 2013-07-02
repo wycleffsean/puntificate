@@ -1,5 +1,10 @@
 require 'sidekiq/capistrano'
 
+set :user, "deployer"
+set :scm_username, "wycleffsean"
+#set :use_sudo, false
+default_run_options[:pty] = true
+
 set :application, "puntificate"
 set :repository,  "git@github.com:wycleffsean/puntificate.git"
 set :ssh_options, { :forward_agent => true }
@@ -8,6 +13,7 @@ set :scm, :git # You can set :scm explicitly or Capistrano will make an intellig
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 set :branch, "master"
 set :deploy_via, :remote_cache
+set :deploy_to, "/var/www"
 
 role :web, "198.199.95.73"                          # Your HTTP server, Apache/etc
 role :app, "198.199.95.73"                          # This may be the same as your `Web` server
