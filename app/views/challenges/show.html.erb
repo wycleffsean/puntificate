@@ -3,12 +3,8 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %> - <%= @challenge.closed ? "Closed" : "Open" %></h1>
 </div>
 <div class="well">
-  <% if @challenge.url.empty? %>
-    <h4><em><%= @challenge.body %></em></h4>
+    <h4><em><%= markdown @challenge.body %></em></h4>
     <small class="pull-right"><%= @challenge.user_name %></small>
-  <% else %>
-    <h4><em><%= link_to @challenge.body, @challenge.url, target: '_blank' %></em></h4>
-  <% end %>
 </div>
 <%
 =begin %>

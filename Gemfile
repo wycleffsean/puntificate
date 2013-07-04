@@ -13,6 +13,7 @@ gem 'devise'
 gem 'acts_as_votable', '~> 0.5.0'
 gem 'cancan'
 gem 'momentjs-rails'
+gem 'redcarpet', '1.17.2'
 
 gem 'sidekiq'
 gem 'sinatra', :require => false # for sidekiq web

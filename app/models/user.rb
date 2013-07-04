@@ -26,13 +26,26 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessor :login
+  attr_accessible :login, :name, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
   acts_as_voter
   has_many :challenges
   has_many :responses
 
+  validates :name, presence: true
+
   def admin?
     self.id == 1
+  end
+
+  # override devise to search for user name or email
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["lower(name) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions).first
+    end
   end
 end
