@@ -43,6 +43,8 @@
     <li>
       <%= link_to '+', challenge_response_upvote_path(@challenge, response) %> / <%= link_to '-', challenge_response_downvote_path(@challenge, response) %>
       <b><%= response.cached_votes_score %></b><%= response.body %> - <%= response.user_name %>
+      <%= link_to 'link', challenge_response_path(@challenge, response) %>
+      
       <%# if can? :destroy, response %>
         <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                     challenge_response_path(@challenge, response),

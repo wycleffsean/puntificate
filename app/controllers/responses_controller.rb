@@ -6,7 +6,8 @@ class ResponsesController < ApplicationController
   end
 
   def show
-    respond_with Response.find(params[:id])
+    @response = Response.find(params[:id])
+    respond_with @response
   end
 
   def create
