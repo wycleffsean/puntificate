@@ -10,10 +10,13 @@ class Ability
         can :read, :all
         unless user.id == nil
             can :manage, Challenge, user_id: user.id                    
-            can :manage, Response, user_id: user.id #, :place => { user_id: user.id }
-        end
-        
+            can :manage, Response, user_id: user.id #, :place => { user_id: user.id }            
+        end        
     end
+
+    can :vote, Response
+    cannot :vote, Response, user_id: user.id# if Rails.env.production?
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

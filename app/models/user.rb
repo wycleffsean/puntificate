@@ -15,7 +15,7 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  name                   :string(255)
+#  name                   :string(255)      default(""), not null
 #
 
 class User < ActiveRecord::Base
@@ -37,6 +37,11 @@ class User < ActiveRecord::Base
 
   def admin?
     self.id == 1
+  end
+  
+  def change_score(points)
+    self.score += points
+    self.save
   end
 
   # override devise to search for user name or email

@@ -24,7 +24,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Puntificate</a>
+          <%= link_to "Puntificate", root_path, :class => 'brand' %>
           <div class="container nav-collapse">
             <ul class="nav">
               <li><%= link_to "Challenges", challenges_url  %></li>
@@ -33,13 +33,14 @@
               <% if user_signed_in? %>
                       <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                          <%= current_user.name %>
+                          <%= "#{current_user.name} (#{current_user.score})" %>
                           <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-                        </ul>
+                        </ul>                        
                       </li>
+                      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
               <% else %>                                              
                       <li><%= link_to "Sign In", new_user_session_path %></li>
                       <li><%= link_to "Register",     new_user_registration_path %></li>

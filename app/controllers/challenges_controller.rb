@@ -2,7 +2,7 @@ class ChallengesController < ApplicationController
   respond_to :html
 
   def index
-    @challenges = Challenge.all
+    @challenges = Challenge.future
   end
 
   def show
@@ -45,9 +45,40 @@ class ChallengesController < ApplicationController
   end
 
   def upvote
-    challenge = Challenge.find(params[:challenge_id])
-    render text: "up id:#{params[:challenge_id]}"
-    throw
+    response = Response.find(params[:response_id])
+    case current_user.voted_as_when_voted_for response
+    when nil
+      response.vote_from current_user
+      response.user.change_score(1)
+    when false
+      response.vote_from current_user
+      response.user.change_score(2)
+    when true
+      response.unvote voter: current_user
+      response.user.change_score(-1)
+    else
+    end
+    #current_user.voted_for?(response) ?  :     
+    redirect_to challenge_path(params[:challenge_id])
+  end
+
+  def downvote
+    response = Response.find(params[:response_id])
+    
+    case current_user.voted_as_when_voted_for response
+    when nil
+      response.downvote_from current_user
+      response.user.change_score(-1)
+    when true
+      response.downvote_from current_user
+      response.user.change_score(-2)
+    when false
+      response.unvote voter: current_user
+      response.user.change_score(1)
+    else
+    end
+    
+    redirect_to challenge_path(params[:challenge_id])
   end
 
 end

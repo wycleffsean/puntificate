@@ -18,7 +18,7 @@
 #
 
 class Challenge < ActiveRecord::Base
-  default_scope where('closed = false')
+  scope :future, -> { where('closed = false') }
   acts_as_votable
   belongs_to :user
   has_many :responses

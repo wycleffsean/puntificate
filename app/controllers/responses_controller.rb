@@ -28,10 +28,15 @@ class ResponsesController < ApplicationController
   def upvote
     response = Response.find(params[:response_id])
     case current_user.voted_as_when_voted_for response
-    when nil, false
+    when nil
       response.vote_from current_user
+      response.user.change_score(1)
+    when false
+      response.vote_from current_user
+      response.user.change_score(2)
     when true
       response.unvote voter: current_user
+      response.user.change_score(-1)
     else
     end
     #current_user.voted_for?(response) ?  :     
@@ -40,12 +45,20 @@ class ResponsesController < ApplicationController
 
   def downvote
     response = Response.find(params[:response_id])
-    case current_user.voted_as_when_voted_for response
-    when nil, true
-      response.downvote_from current_user
-    when false
-      response.unvote voter: current_user
-    else
+    authorize! :vote, response
+    if can? :vote, response #Rails.env.production? && current_user != response.user
+      case current_user.voted_as_when_voted_for response
+      when nil
+        response.downvote_from current_user
+        response.user.change_score(-1)
+      when true
+        response.downvote_from current_user
+        response.user.change_score(-2)
+      when false
+        response.unvote voter: current_user
+        response.user.change_score(1)
+      else
+      end
     end
     redirect_to challenge_path(params[:challenge_id])
   end
