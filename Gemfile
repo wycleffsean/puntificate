@@ -28,9 +28,11 @@ end
 
 group :test do
   gem 'rake' # for travis-ci
-  gem 'qunit-rails'
 end
 
+group :development, :test do
+  gem 'qunit-rails'
+end
 group :production do
 	# Use unicorn as the app server
 	gem 'unicorn'
