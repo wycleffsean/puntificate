@@ -28,6 +28,7 @@ end
 
 group :test do
   gem 'rake' # for travis-ci
+  gem 'qunit-rails'
 end
 
 group :production do
