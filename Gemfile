@@ -26,6 +26,10 @@ group :development do
   gem 'thin'
 end
 
+group :test do
+  gem 'rake' # for travis-ci
+end
+
 group :production do
 	# Use unicorn as the app server
 	gem 'unicorn'
