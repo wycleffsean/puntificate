@@ -1,9 +1,9 @@
-require 'sidekiq/web'
+#require 'sidekiq/web'
 Puntificate::Application.routes.draw do
 
-  authenticate :user, lambda { |u| u.admin? } do
-    mount Sidekiq::Web, at: '/sidekiq'
-  end
+  #authenticate :user, lambda { |u| u.admin? } do
+  #  mount Sidekiq::Web, at: '/sidekiq'
+  #end
 
   devise_for :users
 

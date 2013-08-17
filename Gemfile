@@ -15,7 +15,7 @@ gem 'cancan'
 gem 'momentjs-rails'
 gem 'redcarpet', '1.17.2'
 
-gem 'sidekiq'
+#gem 'sidekiq'
 gem 'sinatra', :require => false # for sidekiq web
 gem 'slim' # for sidekiq web
 

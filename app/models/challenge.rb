@@ -39,7 +39,7 @@ class Challenge < ActiveRecord::Base
 
   after_create :expire_challenge
   def expire_challenge
-    self.delay_until(self.closed_at).close
+    #self.delay_until(self.closed_at).close
   end
 
   def close
