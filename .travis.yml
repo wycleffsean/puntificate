@@ -4,7 +4,7 @@ rvm:
   - 1.9.3  
 #  - jruby-19mode
 before_script:
-  - cp config/database.yml.development-sample config/database.yml
+  - cp config/database.yml.travis config/database.yml
   - psql -c 'create database puntificate_test;' -U postgres
   - rake db:migrate
   - export RUBY_GC_MALLOC_LIMIT=50000000
