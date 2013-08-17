@@ -1,19 +1,17 @@
 <%- model_class = Challenge -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_challenge_url,
-            :class => 'btn btn-primary' %>
 
-<table class="table table-striped">
-  <tbody>
-    <% @challenges.each do |challenge| %>
-      <tr>
-        <td><%= link_to challenge.body, challenge_url(challenge) %></td>
-        <td class="span2"><%=l challenge.created_at %></td>        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="challenges"></div>
+
+<% content_for :javascript do %>
+
+  <script type="text/javascript">
+    $(function() {
+      window.router = new Puntificate.Routers.ChallengesRouter({
+        challenges: <%= @challenges.to_json.html_safe %>
+      });
+      Backbone.history.start();
+    });
+  </script>
+
+<% end %>

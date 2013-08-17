@@ -1,0 +1,60 @@
+<h1>Edit challenge</h1>
+
+<form id="edit-challenge" name="challenge">
+  <div class="field">
+    <label for="body"> body:</label>
+    <input type="text" name="body" id="body" value="<%= body %>" >
+  </div>
+
+  <div class="field">
+    <label for="created_at"> created_at:</label>
+    <input type="text" name="created_at" id="created_at" value="<%= created_at %>" >
+  </div>
+
+  <div class="field">
+    <label for="updated_at"> updated_at:</label>
+    <input type="text" name="updated_at" id="updated_at" value="<%= updated_at %>" >
+  </div>
+
+  <div class="field">
+    <label for="cached_votes_total"> cached_votes_total:</label>
+    <input type="text" name="cached_votes_total" id="cached_votes_total" value="<%= cached_votes_total %>" >
+  </div>
+
+  <div class="field">
+    <label for="cached_votes_score"> cached_votes_score:</label>
+    <input type="text" name="cached_votes_score" id="cached_votes_score" value="<%= cached_votes_score %>" >
+  </div>
+
+  <div class="field">
+    <label for="cached_votes_up"> cached_votes_up:</label>
+    <input type="text" name="cached_votes_up" id="cached_votes_up" value="<%= cached_votes_up %>" >
+  </div>
+
+  <div class="field">
+    <label for="cached_votes_down"> cached_votes_down:</label>
+    <input type="text" name="cached_votes_down" id="cached_votes_down" value="<%= cached_votes_down %>" >
+  </div>
+
+  <div class="field">
+    <label for="user_name"> user_name:</label>
+    <input type="text" name="user_name" id="user_name" value="<%= user_name %>" >
+  </div>
+
+  <div class="field">
+    <label for="closed"> closed:</label>
+    <input type="text" name="closed" id="closed" value="<%= closed %>" >
+  </div>
+
+  <div class="field">
+    <label for="closed_at"> closed_at:</label>
+    <input type="text" name="closed_at" id="closed_at" value="<%= closed_at %>" >
+  </div>
+
+  <div class="actions">
+    <input type="submit" value="Update Challenge" />
+  </div>
+
+</form>
+
+<a href="#/index">Back</a>

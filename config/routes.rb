@@ -4,6 +4,8 @@ Puntificate::Application.routes.draw do
   #authenticate :user, lambda { |u| u.admin? } do
   #  mount Sidekiq::Web, at: '/sidekiq'
   #end
+  
+  root :to => 'challenges#index'
 
   devise_for :users
 
@@ -30,10 +32,7 @@ Puntificate::Application.routes.draw do
   #    resources :challenges
   #    resources :responses
   #  end
-  #end
-
-  #root :to => 'ember#start'
-  root :to => 'challenges#index'
+  #end  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

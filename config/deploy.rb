@@ -1,4 +1,4 @@
-require 'sidekiq/capistrano'
+#require 'sidekiq/capistrano'
 
 set :user, "deployer"
 set :scm_username, "wycleffsean"

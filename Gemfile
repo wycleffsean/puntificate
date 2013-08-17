@@ -6,7 +6,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-#gem 'ember-rails'
+gem 'rails-backbone'
 gem 'rspec-rails'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
@@ -32,6 +32,7 @@ end
 
 group :development, :test do
   gem 'qunit-rails'
+  gem 'sinon-rails'
 end
 group :production do
 	# Use unicorn as the app server
